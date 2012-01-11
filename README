@@ -1,0 +1,49 @@
+Simple ejemplo para correr reportes hechos en Jasper Reports en un proyecto
+ Zk.
+
+---Información de la Aplicación
+-Este proyecto esta hecho para trabajar con unas version de Zk 5.0, Jasper
+ Report 3.7.6, base de dato Postgresql 9.1, OpenJDK 1.6 y servidor Tomcat 6.
+
+-El ejemplo permite generar reportes en formato pdf a partir de archivos .jasper
+y .jrxml en una aplicacion zk y conectarse a una base de datos a usando JDBC
+
+---Instrucciones y explicación de uso
+-Para cargar sus propios reportes (tanto en formatos .jasper y .jrxml) deben 
+colocarlos bajo el directorio "/WebContent/WEB-INF" y las imagenes y recursos
+adicionales en la carpeta "/WebContent/WEB-INF/classes" 
+
+-El manejo de la conexión a la base da datos se hace a través ConeccionBD, 
+donde se debe especificar la cadena de conexión apropiada a su base de datos.
+Con cambiar el valor a las variables database, username y password en el
+construtor y metodo getCon debe ser suficiente para conectarse exitosame a la BD
+
+-En el archivo CntrlReporte se definen la informacion acerca de los reportes. La
+variable reportSrc almacena la ruta absoluta en nuestro archivo .jasper 
+mientras que la variable jrxmlSrc almacena la ruta del archivo .jrxml. Los 
+parametros del reporte se pasan a traves del hashmap llamado parameters.
+
+-Existen tres posibles métodos para generar un reporte showReportfromJrxml()
+muestra un reporte usando como fuente un archivo fuente jrxml, 
+showReportJasperPrint() muestra un reporte a partir de .jasper usando la clase
+JasperPrint, y showReportZKtag() muestra un reporte usando la etiqueta
+jasperreport provista por zk. De acuerdo a sus necesidades llamen en la función
+onClick de su botón de reportes a el método de su preferencia.
+
+--Problemas conocidos y observaciones
+-Existen problemas al ejecutar el proyecto con version de JasperReport mas 
+recientes, prueben bajo su propio riesgo.
+-Se han incluido varias librerias que probablemente no sean necesarias para
+ejecutar la aplicación satisfactoria, se recomienda precaución en caso de que 
+se desee quitar librerias
+-El combo para elegir tipos de formatos de reportes solo es compatible con la
+función showReportZKtag, las demas imprimen el archivo en formato pdf.
+-Pueden existir problemas al generar reportes distintos al pdf, se aconseja
+probar primero.
+-Los reportes que no usan ninguna conexion a base de datos (report1 y 
+testEstatico) deben o comentar la opcion setDataSource o pasar una
+JREmptyDataSource segun el metodo que vayan a llamar, sino se obtendra un 
+reporte en blanco
+-Los archivos reportePersonal y reportes_cuentaspagar necesitan los datos de 
+las primeras versiones de la base de datos de fundalara. Pueden generar errores
+al ejecutarlo con versiones diferentes de la BD

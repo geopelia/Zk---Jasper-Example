@@ -1,0 +1,18 @@
+<?page title="Auto Generated index.zul"?>
+<window id="winReportes" title="Hello World!!" border="normal" width="100%"
+apply="reporte.CntrlReporte">
+
+Choose a File Type : <listbox id="format" mold="select" >
+		<listitem label="PDF" value="pdf" selected="true" />
+		<listitem label="HTML" value="html" />
+		<listitem label="Word (RTF)" value="rtf" />
+		<listitem label="Excel" value="xls" />
+		<listitem label="Excel (JXL)" value="jxl" />
+		<listitem label="CSV" value="csv" />
+		<listitem label="OpenOffice (ODT)" value="odt" unless="false" />
+	</listbox>
+<label value="You are using: ${desktop.webApp.version}"/>
+<button id="btnReportes" label="Get Report"  />
+<jasperreport id="report"  />
+<iframe id ="frame"></iframe>
+</window>
