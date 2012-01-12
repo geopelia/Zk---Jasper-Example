@@ -49,12 +49,12 @@ public class CntrlReporte extends GenericForwardComposer {
 	public CntrlReporte() throws SQLException {
 		super();
 
-		con = ConeccionBD.getCon();
+		con = ConeccionBD.getCon("fundalara","postgres","123456");
 		folder = Sessions.getCurrent().getWebApp().getRealPath("/WEB-INF/");
-		reportSrc = Sessions.getCurrent().getWebApp().getRealPath("/WEB-INF/reportes/testEstatico.jasper");
+		reportSrc = Sessions.getCurrent().getWebApp().getRealPath("/WEB-INF/reportes/CuentasPorPagar.jasper");
 		parameters.put("titulo", "Hola mundo");
 		parameters.put("fecha_ven", "01/01/2012");
-		jrxmlSrc = Sessions.getCurrent().getWebApp().getRealPath("/WEB-INF/reportes/ReportePersonal.jrxml");
+		jrxmlSrc = Sessions.getCurrent().getWebApp().getRealPath("/WEB-INF/reportes/Cuentas Por Pagar.jrxml");
 		
 		
 	}
